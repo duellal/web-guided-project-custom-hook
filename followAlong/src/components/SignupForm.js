@@ -21,22 +21,33 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignupForm() {
-  const classes = useStyles();
+//Create a custom hook function
+//Add in stateful logic
+//Return things used within the component from the hook
+//Connect the hook to the component
+const useHook = () => {
+
   const [firstName, setFirstName] = useState("");
 
   const handleChanges = e => {
     setFirstName(e.target.value);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert(firstName);
-  };
-
   const clearForm = e => {
     e.preventDefault();
     setFirstName("");
+  };
+
+  return ([handleChanges, clearForm, firstName])
+}
+
+export default function SignupForm() {
+  const classes = useStyles();
+  const [handleChanges, clearForm, firstName] = useHook()
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    alert(firstName);
   };
 
   return (
