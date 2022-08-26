@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 
 import Button from "../theme/Button";
 
+//Hook:
+import useForm from "../hooks/useForm";
+
 const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
@@ -21,33 +24,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-//Create a custom hook function
-//Add in stateful logic
-//Return things used within the component from the hook
-//Connect the hook to the component
-const useHook = () => {
-
-  const [firstName, setFirstName] = useState("");
-
-  const handleChanges = e => {
-    setFirstName(e.target.value);
-  };
-
-  const clearForm = e => {
-    e.preventDefault();
-    setFirstName("");
-  };
-
-  return ([handleChanges, clearForm, firstName])
+const initialValues = {
+  firstName: 'John',
+  lastName: 'Kelly',
+  email: 'johnkelly@gmail.com'
 }
 
 export default function SignupForm() {
   const classes = useStyles();
-  const [handleChanges, clearForm, firstName] = useHook()
+  const [handleChanges, clearForm, values] = useForm(initialValues)
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(firstName);
+    alert(`${values.firstName} ${values.lastName} ${values.email}`);
   };
 
   return (
@@ -60,7 +49,27 @@ export default function SignupForm() {
             label="First Name"
             className={classes.textField}
             name="firstName"
-            value={firstName}
+            value={values.firstName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-name"
+            label="Last Name"
+            className={classes.textField}
+            name="lastName"
+            value={values.lastName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-name"
+            label="email"
+            className={classes.textField}
+            name="email"
+            value={values.email}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
