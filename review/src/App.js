@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles.scss";
 
+//Components:
 import PokeList from './components/pokeList'
 import SelectedPoke from './components/selectedPokemon'
-import { getPokemen, getPokemonData } from "./services/pokeServices";
 
-const usePokeState = (initialPokemon, initialSelectedPokemon) => {
-  const [pokemen, setPokemen] = useState(initialPokemon);
-  const [selectedPokemon, setSelectedPokemon] = useState(initialSelectedPokemon);
-
-  useEffect(() => {
-    setPokemen(getPokemen());
-  }, []);
-
-  const handlePoke = (id) => {
-    getPokemonData(id)
-      .then((data) => {
-        setSelectedPokemon(data);
-      });
-  }
-
-  return ([selectedPokemon, handlePoke, pokemen])
-}
+//Hook:
+import usePokeState from './hooks/usePokeState.js'
 
 function App() {
   const [selectedPokemon, handlePoke, pokemen] = usePokeState([], {})
