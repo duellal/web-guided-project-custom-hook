@@ -1,10 +1,30 @@
-# Notes:
-
-
 # Q+A:
 
 Since we are keeping our App component as dry as possible, is it ever appropriate to add a styled component in our App.js?
 - Yes, you can.
 
+How long does localStorage stay?
+- About 3-7 days
+- sessionData: can stay for a couple months
+- Cookies: several months
 
+Why did we pass the form to localStorage? Where did we get the form from?
+- 'Form' is naming the key. You can name it whatever you want, but in this case it makes sense to call it form. 
 
+How much can be stored in localStorage?
+- Unsure. There are limits on it:
+   - how long of a string
+   - how many fields
+
+- If you are pushing the limits on what the localStorage can do, you should make an actual database
+
+Is localStorage used for security reasons?
+- It can. Safer than putting in the code. In order to get access to localStorage, the perosn would have to get access to your machine. Which is more difficult than getting the code.
+- Can use for saving API keys
+
+ Is localStorage for you whole machine or for a specific place?
+ - It is tied to a particular URL
+ - the URL has it's own directory of it's own localStorage - they don't tend to be very big
+
+ Should the key be named something unique, like a string of numbers and letters, instead of "form"?
+ - It's up to the developer of what the names should be and how they are using it
