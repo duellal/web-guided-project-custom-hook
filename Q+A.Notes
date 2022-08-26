@@ -3,3 +3,8 @@
 
 # Q+A:
 
+Since we are keeping our App component as dry as possible, is it ever appropriate to add a styled component in our App.js?
+- Yes, you can.
+
+
+
